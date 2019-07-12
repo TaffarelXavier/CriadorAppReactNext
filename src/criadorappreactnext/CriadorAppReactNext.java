@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
@@ -31,7 +32,6 @@ public class CriadorAppReactNext {
      */
     public static void executarComando(String pastaRaiz, String comando, JTextArea jTextArea1) {
         try {
-            
             
             ProcessBuilder builder = new ProcessBuilder(
                     "cmd.exe", "/c", "cd /d "+ pastaRaiz + " && " + comando);
@@ -63,7 +63,7 @@ public class CriadorAppReactNext {
             }
             
         } catch (IOException ex) {
-            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,ex.getMessage() , "Atenção", 0);
         }
     }
     /**
@@ -73,9 +73,7 @@ public class CriadorAppReactNext {
      * @param jTextArea1 
      */
     public static void exerComandoSemSaida(String pastaRaiz, String comando, JTextArea jTextArea1) {
-        try {
-            
-            
+        try {  
             ProcessBuilder builder = new ProcessBuilder(
                     "cmd.exe", "/c", "cd /d "+ pastaRaiz + " && " + comando);
 
@@ -106,7 +104,7 @@ public class CriadorAppReactNext {
             }
             
         } catch (IOException ex) {
-            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null,ex.getMessage() , "Atenção", 0);
         }
     }
 

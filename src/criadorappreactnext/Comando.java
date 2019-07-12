@@ -185,22 +185,25 @@ public class Comando extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        String nomeDoArquivo = jTextField3.getText();
+        try {
+            String nomeDoArquivo = jTextField3.getText();
 
-        File file = new File(CriadorAppReactNext.getCaminhoRaizProjeto() + "\\" + nomeDoArquivo);
+            File file = new File(CriadorAppReactNext.getCaminhoRaizProjeto() + "\\" + nomeDoArquivo);
 
-        System.out.println(file.exists());
+            System.out.println(file.exists());
 
-        if (!file.exists()) {
-            try {
-                if (file.createNewFile()) {
-                    JOptionPane.showMessageDialog(null, "Arquivo criado com sucesso!", "Sucesso", 1);
+            if (!file.exists()) {
+                try {
+                    if (file.createNewFile()) {
+                        JOptionPane.showMessageDialog(null, "Arquivo criado com sucesso!", "Sucesso", 1);
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(Comando.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } catch (IOException ex) {
-                Logger.getLogger(Comando.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Atenção", 0);
         }
-
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
